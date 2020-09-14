@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,900&display=swap');
+
+$digitSize:     100px;
+$digitColour:   #4C6377;
+
+
+body {
+  background: lighten($digitColour, 57);
+  background-image: radial-gradient(50% 81%, #fff 9%, lighten($digitColour, 45) 82%);
+  display: grid;
+  height: 100vh;
+  margin: 0;
+  place-items: center center;
+}
+
+.countdown__message {
+  color: $digitColour;
+  font-family: 'Roboto', sans-serif;
+  font-size: $digitSize / 4;
+  font-weight: 100;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.countdown__digit {
+  background: lighten($digitColour, 55);
+  background-image: linear-gradient(180deg, lighten($digitColour, 55) 10%, #FFFFFF 100%);
+  border-radius: 0.25em;
+  box-shadow: 
+    0 20px 30px -10px rgba($digitColour,0.1),
+    inset 0 -1px 0 0 rgba($digitColour,0.3),
+    inset 0 1px 0 0 #fff
+  ;
+  color: $digitColour;
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: $digitSize;
+  font-weight: 900;
+  margin: 0 0.05em;
+  padding: 0.2em 0;
+  position: relative;
+  text-align: center;
+  width: 1.2em;
+
+  &:after {
+    background: rgba(darken($digitColour, 30), 0.05);
+    box-shadow: 0 2px 1px 0 rgba(255,255,255,0.2);
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+
+  &:before {
+    background: rgba(darken($digitColour, 5), 0.01);
+    border-radius: 0.25em 0.25em 0 0;
+    bottom: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+}
+
+.countdown__list {
+  margin: 0;
+  padding: 0;
+}
+
+.countdown__list-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
