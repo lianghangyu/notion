@@ -1,57 +1,134 @@
-<html> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Greeting Message</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <title>Document</title>
     <style>
-#lbl {
-    font-family: monospace;
-    font-size: xx-large;
-    color: #626262;
-    padding: 5px;
-    border: 1px solid #ececec;
-    text-align: center;
-    line-height: 1.5;
-    height:85%
 
-
-}
-#date{
-    font-size:large;
-}
 body{
-    background-color: aliceblue;
+    background-color: white;
 }
+  
+#timer {
+  color: #eeeeee;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: .7em;
+  letter-spacing: 5px;
+}
+
+.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 20px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.days {
+  background: #EF2F3C;
+}
+
+.hours {
+  background: #eeeeee;
+  color: #183059;
+}
+
+.minutes {
+  background: #276FBF;
+}
+
+.seconds {
+  background: #F0A202;
+}
+
+.numbers {
+  font-family: 'Montserrat', sans-serif;
+  color:  #183059;
+  font-size: 4em;
+  text-align: center;
+}
+
+.white {
+  position: absolute;
+  background:  #eeeeee;
+  height: 85px;
+  width: 75px;
+  left: 30%;
+  top: 2%;
+}
+
+.red {
+  position: absolute;
+  background:  #EF2F3C;
+  left: 18%;
+  top: 9%;
+  height: 65px;
+  width: 70px;
+ 
+}
+
+.blue {
+  position: absolute;
+  background:  #276FBF;
+  height: 80px;
+  width: 80px;
+  left: 60%;
+  top: 5%;
+
+
+}
+
+
     </style>
 </head>
 <body>
-    <div id="lbl"></div>
-</body>
-
-<script>
-    var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-
     
-    var today = new Date();
-    var hrs = today.getHours();
-    var dayOfWeek = weekday[today.getDay()];
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
+<div id="timer">
 
-    var greet;
+    <div class="days"> 
+        <div id="days" class="numbers "> </div>days</div> 
+      <div class="hours"> 
+        <div  id="hours" class="numbers"> </div>hours</div> 
+      <div class="minutes"> 
+        <div  id="minutes" class="numbers"> </div>minutes</div> 
+      <div   class="seconds"> 
+        <div id="seconds" class="numbers"> </div>seconds</div> 
+      </div>
 
-    if (hrs < 12)
-        greet = 'Good Morning  ';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon ';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening  ';
+</div>
 
-    document.getElementById('lbl').innerHTML =
-        greet+=`<div id="date"> It's ${date}</div>`;
-</script> 
+</body>
+<script>
+    const year = new Date().getFullYear();
+const myDate = new Date('Oct 01, 2020 00:00:00');
+console.log(myDate);
+
+// countdown
+let timer = setInterval(function() {
+
+  // get today's date
+  const today = new Date().getTime();
+
+  // get the difference
+  const diff = myDate - today;
+
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // display
+  document.getElementById("days").innerHTML=days
+  document.getElementById("hours").innerHTML=hours
+  document.getElementById("minutes").innerHTML=minutes
+  document.getElementById("seconds").innerHTML=seconds
+
+
+
+}, 1);
+</script>
 </html>
